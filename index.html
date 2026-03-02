@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komunitas Airdrop Crypto Riyad</title>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES (Tema Crypto Dark Mode) --- */
+        :root {
+            --bg-dark: #0B0F19;      /* Background utama (Sangat Gelap) */
+            --bg-card: #151A2E;      /* Background kartu */
+            --primary: #8B5CF6;      /* Ungu Crypto */
+            --secondary: #3B82F6;    /* Biru Neon */
+            --text-main: #F8FAFC;    /* Putih Terang */
+            --text-muted: #94A3B8;   /* Abu-abu terang untuk deskripsi */
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- ANIMASI --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* --- NAVBAR Sederhana --- */
+        nav {
+            padding: 25px 0;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek cahaya glow di background hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #C4B5FD;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--text-main);
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.5);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- SECTIONS UMUM --- */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--secondary);
+        }
+
+        .section-line {
+            height: 4px;
+            width: 50px;
+            background: var(--gradient);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* --- TENTANG --- */
+        .tentang {
+            background-color: #0E1324;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .tentang-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+        }
+
+        /* --- KEUNGGULAN --- */
+        .keunggulan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- TESTIMONI --- */
+        .testimoni {
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjMEIwRjE5Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjMTVBMUEyRSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+Cjwvc3ZnPg==');
+        }
+
+        .testimoni-card {
+            background: rgba(21, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
+        .testimoni-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            margin-top: 10px;
+        }
+
+        .testimoni-author {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #070A11;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE DESIGN (HP) --- */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0 50px 0;
+                text-align: center;
+            }
+            .hero-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-image img {
+                max-width: 100%;
+                animation: none; /* Matikan floating di HP biar gak pusing */
+            }
+            section {
+                padding: 70px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .testimoni-card {
+                padding: 40px 20px;
+            }
+            .testimoni-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container">
+            <div class="logo">AirdropRiyad</div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container hero-wrapper">
+            <div class="hero-content fade-in delay-1">
+                <div class="badge">🔥 100% Gratis & Aman</div>
+                <h1 class="hero-title">Komunitas Airdrop Crypto <span>Riyad</span></h1>
+                <p class="hero-subtitle">Bergabung & Dapatkan Airdrop Terbaru Setiap Hari. Jangan sampai ketinggalan cuan dari project testnet, retroaktif, dan mainnet pilihan yang sudah dikurasi.</p>
+                <!-- Placeholder link tombol (#) -->
+                <a href="#" class="btn">🚀 Gabung Sekarang</a>
+            </div>
+            <div class="hero-image fade-in delay-2">
+                <!-- Ganti file crypto.jpg nanti. Kalau file tidak ada, otomatis pakai gambar ilustrasi dari Unsplash -->
+                <img src="crypto.jpg" alt="Ilustrasi Crypto" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1621416894569-0f39ed31d247?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';">
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION TENTANG -->
+    <section class="tentang fade-in delay-3">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tentang Komunitas</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="tentang-text">
+                Komunitas Airdrop Crypto Riyad adalah tempat berkumpulnya para airdrop hunter dan crypto enthusiast. Kami secara rutin membagikan informasi airdrop potensial, tutorial step-by-step menggarap testnet, tips keamanan wallet, serta alert terbaru langsung ke HP Anda. Bersama, kita maksimalkan peluang cuan di dunia Web3.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION KEUNGGULAN -->
+    <section id="keunggulan">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Kenapa Harus <span>Gabung?</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="keunggulan-grid">
+                <div class="card fade-in delay-1">
+                    <div class="card-icon">⚡</div>
+                    <h3>Update Harian</h3>
+                    <p>Informasi airdrop dan task terbaru dibagikan setiap hari agar Anda tidak telat menggarap project potensial.</p>
+                </div>
+                <div class="card fade-in delay-2">
+                    <div class="card-icon">💡</div>
+                    <h3>Tips & Tutorial</h3>
+                    <p>Panduan lengkap step-by-step yang mudah dipahami, bahkan untuk pemula yang baru terjun ke dunia crypto.</p>
+                </div>
+                <div class="card fade-in delay-3">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Aman & Terpercaya</h3>
+                    <p>Semua link dan project selalu kami riset (DYOR) dan saring terlebih dahulu untuk menghindari penipuan/scam.</p>
+                </div>
+                <div class="card fade-in delay-1">
+                    <div class="card-icon">🤝</div>
+                    <h3>Komunitas Aktif</h3>
+                    <p>Diskusi seru sesama member, saling bantu memecahkan masalah task, dan sharing insight seputar market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION TESTIMONI -->
+    <section class="testimoni">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Apa Kata <span>Member?</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimoni-card fade-in delay-2">
+                <div class="quote-icon">❝</div>
+                <p class="testimoni-text">"Semenjak gabung komunitas Kang Riyad, garap airdrop jadi lebih terarah. Tutorialnya gampang diikutin, gak pusing cari link sana-sini, dan yang paling penting adminnya selalu update soal keamanan. Mantap pisan pokokna mah!"</p>
+                <p class="testimoni-author">— Asep Kripto, Member Aktif</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <!-- Placeholder Link Sosial Media, ganti href="#" ku link asli engke -->
+                <a href="#" title="Telegram">📱</a>
+                <a href="#" title="Twitter / X">🐦</a>
+                <a href="#" title="Discord">👾</a>
+            </div>
+            <p>Copyright &copy; 2026 Komunitas Airdrop Crypto Riyad. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
